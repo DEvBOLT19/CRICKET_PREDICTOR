@@ -1,5 +1,5 @@
 #here is an image of the product and the link is in the discription!
-![Alt text]()
+![Alt text](trial.jpg)
 
 # 🏏 Cricket Win Predictor
 
