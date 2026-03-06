@@ -1,0 +1,4 @@
+player_id,season,matches,innings,runs,highest_score,average,strike_rate,fours,sixes,dot_ball_percentage,boundary_percentage,aggression_index,powerplay_strike_rate,death_over_strike_rate
+1,2025,14,14,512,96,42.67,145.1,48,27,36.4,22.5,78.6,138.4,176.2
+3,2025,14,13,332,68,30.18,136.7,24,17,39.2,18.1,64.2,129.7,162.5
+4,2025,12,11,286,54,35.75,139.5,20,14,34.5,19.4,69.8,131.2,171.9

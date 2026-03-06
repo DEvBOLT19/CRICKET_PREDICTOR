@@ -1,0 +1,4 @@
+player_id,season,matches,overs,runs_conceded,wickets,economy,bowling_average,strike_rate,dot_ball_percentage,death_over_economy,powerplay_economy
+2,2025,14,53.2,386,21,7.24,18.38,15.2,44.7,8.11,6.72
+3,2025,14,49.0,372,16,7.59,23.25,18.4,41.2,8.46,7.01
+5,2025,14,52.0,355,19,6.83,18.68,16.4,47.3,7.52,6.31
