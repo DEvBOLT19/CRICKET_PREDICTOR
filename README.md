@@ -1,3 +1,6 @@
+#here is an image of the product and the link is in the discription!
+![Alt text]()
+
 # 🏏 Cricket Win Predictor
 
 A practical IPL/T20 prediction starter project with:
