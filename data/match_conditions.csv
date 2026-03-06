@@ -1,0 +1,4 @@
+match_id,temperature,humidity,dew_factor,pitch_type,day_or_night_match
+1001,30.1,68,0.74,Flat,Night
+1002,27.4,56,0.42,Batting-friendly,Night
+1003,33.0,38,0.18,Dry-spin,Day

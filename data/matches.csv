@@ -1,0 +1,4 @@
+match_id,season,date,city,venue,team1,team2,toss_winner,toss_decision,winner,win_by_runs,win_by_wickets,player_of_match,team1_score,team2_score,powerplay_runs,death_over_runs
+1001,2025,2025-04-02,Mumbai,Wankhede Stadium,Mumbai Indians,Chennai Super Kings,Mumbai Indians,bat,Mumbai Indians,18,0,Rohit Sharma,186,168,52,58
+1002,2025,2025-04-08,Bengaluru,M Chinnaswamy Stadium,Royal Challengers Bangalore,Kolkata Knight Riders,Kolkata Knight Riders,field,Kolkata Knight Riders,0,6,Sunil Narine,184,188,48,62
+1003,2025,2025-04-15,Jaipur,Sawai Mansingh Stadium,Rajasthan Royals,Lucknow Super Giants,Rajasthan Royals,field,Rajasthan Royals,0,4,Jos Buttler,176,177,50,55
