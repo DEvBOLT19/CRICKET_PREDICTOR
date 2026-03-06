@@ -1,147 +1,145 @@
 # 🏏 Cricket Win Predictor
 
-A production-style starter project for predicting **T20 chase win probability** from ball-by-ball match state.
+A practical IPL/T20 prediction starter project with:
 
-This repository is structured to help you go from raw IPL/T20 data to a trained model and a Streamlit app quickly.
-
----
-
-## ✨ What this project does
-
-- Ingests ball-by-ball cricket data (IPL / T20I).
-- Engineers live chase-pressure features.
-- Trains a machine learning pipeline (XGBoost or Logistic baseline).
-- Serves predictions through a Streamlit web app.
+- **Data foundation** (match, player, venue, team-form, and ball-by-ball CSVs)
+- **Feature-ready training frame** for chase prediction
+- **Streamlit web app** to explore datasets and predict outcomes
 
 ---
 
-## 📥 1) Data Prompt (Where to get data)
+## ✨ What this repository provides
 
-Use **Cricsheet** or **Kaggle** and download IPL/T20 ball-by-ball datasets (CSV/JSON).
-
-If you're using search/API tools, use this exact prompt:
-
-> **"Download the latest ball-by-ball cricket dataset for T20 matches including IPL 2025/2026. The data must include: match_id, venue, batting_team, bowling_team, ball_number, runs_off_bat, extras, and player_dismissed."**
-
-### Minimum required raw columns
-
-- `match_id`
-- `venue`
-- `batting_team`
-- `bowling_team`
-- `ball_number`
-- `runs_off_bat`
-- `extras`
-- `player_dismissed`
+- Sample IPL datasets across multiple granularities (match-level, player-level, and delivery-level)
+- Starter chase-state training data (`final_df.csv`)
+- Streamlit app with:
+  - **Predict Winner** workflow
+  - **Data Explorer** workflow for all CSVs in `data/`
+  - **Heuristic fallback** prediction if `models/pipe.pkl` is not available
 
 ---
 
-## 🗂️ 2) Folder Structure
+## 🗂️ Project structure
 
 ```plaintext
-cricket_win_predictor/
+CRICKET_PREDICTOR/
 │
-├── data/                   # Raw and processed datasets
+├── app/
+│   └── app.py
+├── data/
 │   ├── raw_data.csv
-│   └── final_df.csv        # Cleaned data for training
-│
-├── models/                 # Saved machine learning models
-│   └── pipe.pkl            # Trained XGBoost/Logistic Pipeline
-│
-├── notebooks/              # Jupyter notebooks for testing
+│   ├── final_df.csv
+│   ├── player_stats.csv
+│   ├── matches.csv
+│   ├── deliveries.csv
+│   ├── players.csv
+│   ├── batting_stats.csv
+│   ├── bowling_stats.csv
+│   ├── venues.csv
+│   ├── head_to_head.csv
+│   ├── team_form.csv
+│   ├── team_strength_metrics.csv
+│   └── match_conditions.csv
+├── notebooks/
 │   └── data_cleaning.ipynb
-│
-├── app/                    # Web application files
-│   └── app.py              # Main Streamlit script
-│
-├── requirements.txt        # List of dependencies
-└── README.md               # Project documentation
+├── models/
+│   └── pipe.pkl              # optional (trained model)
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## 🧠 3) Technical Workflow Blueprint
+## 📊 Dataset guide
 
-To reach strong performance (targeting **80%+ accuracy**), your model must understand chase context—not just score.
+### 1) Match-level data
+- `data/matches.csv`
+- Key fields include: `match_id`, `season`, `city`, `venue`, `team1`, `team2`, `toss_winner`, `winner`, `team1_score`, `team2_score`
 
-### Feature engineering (Current State)
+### 2) Ball-by-ball data
+- `data/deliveries.csv`
+- Key fields include: `match_id`, `inning`, `over`, `ball`, `batsman`, `bowler`, `runs_scored`, `extras`, `wicket`
 
-From each ball, compute:
+### 3) Player profile data
+- `data/players.csv`, `data/player_stats.csv`
+- Includes role, batting/bowling style, team, experience, and lifetime indicators
 
-- **Current Score**: cumulative runs by batting team up to current ball.
-- **Runs Left**: `target - current_score`.
-- **Balls Left**: `120 - balls_bowled`.
-- **Wickets Left**: `10 - wickets_fallen`.
-- **CRR (Current Run Rate)**: `current_score / overs_completed`.
-- **RRR (Required Run Rate)**: `(runs_left / balls_left) * 6`.
+### 4) Player performance data
+- `data/batting_stats.csv`
+- `data/bowling_stats.csv`
+- Includes strike-rate/economy and phase-relevant metrics
 
-### Suggested modeling flow
+### 5) Team & venue context
+- `data/venues.csv`
+- `data/head_to_head.csv`
+- `data/team_form.csv`
+- `data/team_strength_metrics.csv`
+- `data/match_conditions.csv`
 
-1. Load raw ball-by-ball data.
-2. Build match-state rows ball-by-ball.
-3. Keep only second-innings chase rows (if modeling chase win probability).
-4. Split train/test by match (avoid leakage across balls in the same match).
-5. Train baseline Logistic Regression pipeline.
-6. Train XGBoost pipeline and compare AUC/accuracy/log-loss.
-7. Save best model as `models/pipe.pkl`.
+These are useful for engineered features like:
+- toss impact
+- venue advantage
+- recent form difference
+- head-to-head ratio
+- batting vs bowling strength gap
 
 ---
 
-## 🚀 4) Streamlit App
+## 🧠 Modeling blueprint (recommended)
 
-The starter app is in `app/app.py` and includes:
+1. Start with `raw_data.csv` / `deliveries.csv`.
+2. Build ball-by-ball chase-state features.
+3. Use `final_df.csv` as a baseline schema.
+4. Join context data (venue/team form/head-to-head/player strength).
+5. Split train/test by match or season (avoid leakage).
+6. Train baseline Logistic Regression and tree models (Random Forest / XGBoost).
+7. Save the best pipeline to `models/pipe.pkl`.
 
-- Team and city selectors.
-- Target, score, overs, wickets inputs.
-- Derived features (`runs_left`, `balls_left`, `wickets`, `crr`, `rrr`).
-- Win probability display for batting and bowling teams.
+---
 
-### Run locally
+## 🚀 Run the app
 
 ```bash
 pip install -r requirements.txt
 streamlit run app/app.py
 ```
 
-> Ensure `models/pipe.pkl` exists before prediction.
+### App capabilities
+
+- **Predict Winner tab**
+  - Enter batting team, bowling team, city, target, score, overs, wickets
+  - See win probability for both teams
+  - View derived match-state features + engineered context features
+
+- **Data Explorer tab**
+  - Browse all `data/*.csv`
+  - Inspect rows/columns in-app
+  - Download selected CSV directly
+
+> If `models/pipe.pkl` does not exist, the app still predicts using a built-in heuristic fallback.
 
 ---
 
-## 🎯 5) How to make the model “Very Good”
+## ✅ Next steps
 
-- **Use XGBoost** for non-linear pressure interactions.
-- **Apply recency weighting** (higher weight to last 2–3 years).
-- **Prefer city over stadium name** to reduce category sparsity.
-- Add richer context features:
-  - phase (`powerplay`, `middle`, `death`)
-  - recent momentum (last 6 balls runs/wickets)
-  - venue-adjusted scoring trends
-- Validate by season (time-based validation) to simulate real deployment.
+- Replace sample CSVs with full historical IPL datasets.
+- Add training scripts (`scripts/feature_engineering.py`, `scripts/train_model.py`).
+- Evaluate with season-wise validation.
+- Persist the best model to `models/pipe.pkl`.
 
 ---
 
-## ✅ Next Steps Checklist
+## 📦 Core dependencies
 
-- [ ] Replace `data/raw_data.csv` with real ball-by-ball data.
-- [ ] Build/extend `notebooks/data_cleaning.ipynb` to output `data/final_df.csv`.
-- [ ] Train and serialize model to `models/pipe.pkl`.
-- [ ] Launch Streamlit app and test multiple chase scenarios.
-
----
-
-## 📦 Dependencies
-
-Core libraries are listed in `requirements.txt`:
-
-- Streamlit
-- Pandas
-- NumPy
-- Scikit-learn
-- XGBoost
-- Jupyter
+- streamlit
+- pandas
+- numpy
+- scikit-learn
+- xgboost
+- jupyter
 
 ---
 
 ## 📝 License
 
-This project uses the repository's existing `LICENSE` file.
+This project uses the repository's `LICENSE` file.

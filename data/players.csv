@@ -1,0 +1,6 @@
+player_id,name,team,country,role,batting_style,bowling_style,age,experience_years
+1,Rohit Sharma,Mumbai Indians,India,Batsman,Right-hand bat,Right-arm offbreak,38,18
+2,Jasprit Bumrah,Mumbai Indians,India,Bowler,Right-hand bat,Right-arm fast,32,12
+3,Ravindra Jadeja,Chennai Super Kings,India,All-rounder,Left-hand bat,Slow left-arm orthodox,36,17
+4,MS Dhoni,Chennai Super Kings,India,Wicketkeeper,Right-hand bat,Right-arm medium,44,19
+5,Sunil Narine,Kolkata Knight Riders,West Indies,All-rounder,Left-hand bat,Right-arm offbreak,37,13
