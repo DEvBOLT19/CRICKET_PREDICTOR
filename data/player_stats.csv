@@ -1,0 +1,13 @@
+player_name,team,role,batting_style,bowling_style,matches,wins,win_rate,lifetime_runs,lifetime_wickets,batting_average,strike_rate,best_bowling,economy,career_span
+Rohit Sharma,Mumbai Indians,Batter,Right-hand bat,Right-arm offbreak,257,144,56.03,6628,15,29.72,131.14,2/6,8.12,2008-2025
+Suryakumar Yadav,Mumbai Indians,Batter,Right-hand bat,Right-arm medium,153,85,55.56,3594,0,33.27,145.01,0/0,0.00,2012-2025
+Hardik Pandya,Mumbai Indians,All-rounder,Right-hand bat,Right-arm fast-medium,137,78,56.93,2525,64,28.69,145.92,3/17,9.18,2015-2025
+MS Dhoni,Chennai Super Kings,Wicketkeeper-Batter,Right-hand bat,Right-arm medium,264,151,57.20,5243,0,39.72,137.53,0/0,0.00,2008-2025
+Ravindra Jadeja,Chennai Super Kings,All-rounder,Left-hand bat,Slow left-arm orthodox,241,136,56.43,2959,163,27.66,129.96,5/16,7.62,2008-2025
+Virat Kohli,Royal Challengers Bangalore,Batter,Right-hand bat,Right-arm medium,252,117,46.43,8004,4,38.30,131.97,2/25,8.81,2008-2025
+Faf du Plessis,Royal Challengers Bangalore,Batter,Right-hand bat,Right-arm legbreak,145,79,54.48,4571,0,35.15,136.82,0/0,0.00,2012-2025
+Andre Russell,Kolkata Knight Riders,All-rounder,Right-hand bat,Right-arm fast,127,71,55.91,2484,115,29.93,174.02,5/15,9.41,2012-2025
+Sunil Narine,Kolkata Knight Riders,All-rounder,Left-hand bat,Right-arm offbreak,177,97,54.80,1534,187,18.92,166.02,5/19,6.73,2012-2025
+Jos Buttler,Rajasthan Royals,Wicketkeeper-Batter,Right-hand bat,Right-arm medium,112,60,53.57,3754,0,39.11,148.55,0/0,0.00,2016-2025
+Sanju Samson,Rajasthan Royals,Wicketkeeper-Batter,Right-hand bat,Right-arm offbreak,167,78,46.71,4419,0,30.89,138.34,0/0,0.00,2013-2025
+KL Rahul,Lucknow Super Giants,Wicketkeeper-Batter,Right-hand bat,Right-arm medium,132,67,50.76,4683,0,45.91,134.68,0/0,0.00,2013-2025

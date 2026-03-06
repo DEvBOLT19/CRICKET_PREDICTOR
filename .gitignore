@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Model / binary artifacts
+models/*.pkl
+*.pkl
+*.joblib
+*.onnx
+*.bin
+*.pt
+*.npy
