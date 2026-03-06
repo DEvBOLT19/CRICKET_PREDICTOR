@@ -100,8 +100,7 @@ These are useful for engineered features like:
 ## 🚀 Run the app
 
 ```bash
-pip install -r requirements.txt
-streamlit run app/app.py
+python scripts/train_model.py
 ```
 
 ### App capabilities
@@ -118,7 +117,12 @@ streamlit run app/app.py
 
 > If `models/pipe.pkl` does not exist, the app still predicts using a built-in heuristic fallback.
 
----
+### App capabilities
+
+- **Predict Winner tab**
+  - Enter batting team, bowling team, city, target, score, overs, wickets
+  - See win probability for both teams
+  - View derived match-state features + engineered context features
 
 ## ✅ Next steps
 
